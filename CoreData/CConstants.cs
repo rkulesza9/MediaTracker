@@ -18,5 +18,9 @@ namespace CoreData
         public const string FILE_DIALOG_MSGBOX_SAVE = "File Saved.";
 
         public const string STATUS_BAR_TEXT = "Select A File.";
+
+        public const int CLASS_SERIES_TYPE = 0;
+        public const int CLASS_SERIES = 1;
+        public const int CLASS_ISSUE = 2;
     }
 }
