@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -50,7 +50,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\app_icon1.ico</ApplicationIcon>
+    <ApplicationIcon>62845television_109243.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>078AC562CCFCCCE3A685E6F98AC6B6E77EAFA895</ManifestCertificateThumbprint>
@@ -139,7 +139,9 @@
     <None Include="Resources\app_icon.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="62845television_109243.ico" />
     <Content Include="app_icon.ico" />
+    <None Include="Resources\62845television_109243.ico" />
     <None Include="Resources\app_icon1.ico" />
     <None Include="Resources\icons8-tv-show-100.png" />
     <None Include="Resources\remove.png" />
