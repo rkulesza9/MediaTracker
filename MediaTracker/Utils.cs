@@ -16,5 +16,13 @@ namespace MediaTracker
             fmChild.WindowState = FormWindowState.Maximized;
             fmChild.Show();
         }
+
+        public static void RefreshColumnWidth(ListView lv)
+        {
+            foreach(ColumnHeader c in lv.Columns)
+            {
+                c.Width = -2;
+            }
+        }
     }
 }

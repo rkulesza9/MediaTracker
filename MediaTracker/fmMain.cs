@@ -18,6 +18,7 @@ namespace MediaTracker
         public fmMain()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.FormClosed += FmMain_FormClosed;
             lblFilename.Text = CConstants.STATUS_BAR_TEXT;
         }
@@ -117,21 +118,6 @@ namespace MediaTracker
             {
 
             }
-        }
-
-        private void menuSeriesType_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void menuSeries_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void menuIssues_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

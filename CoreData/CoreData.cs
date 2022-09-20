@@ -19,6 +19,8 @@ namespace CoreData
         {
             try
             {
+                string szJson;
+
                 if (!File.Exists(m_szJsonFilePath))
                 {
                     m_cData = new CData();
@@ -26,15 +28,15 @@ namespace CoreData
                     m_cData.m_cSeries = new List<CSeries>();
                     m_cData.m_cIssues = new List<CIssue>();
 
-                    string szJson = JsonConvert.SerializeObject(m_cData);
+                    szJson = JsonConvert.SerializeObject(m_cData);
                     File.WriteAllText(m_szJsonFilePath, szJson);
-                } else
-                {
-                    string szJson = File.ReadAllText(m_szJsonFilePath);
-                    m_cData = JsonConvert.DeserializeObject<CData>(szJson);
                 }
 
-            }catch(Exception e)
+                szJson = File.ReadAllText(m_szJsonFilePath);
+                m_cData = JsonConvert.DeserializeObject<CData>(szJson);
+
+            }
+            catch (Exception e)
             {
                 Debug.WriteLine(e);
             }
@@ -73,39 +75,42 @@ namespace CoreData
             return m_cData.m_cIssues.Where((x) => x.m_nID == nID).First();
         }
 
-        public List<CSeries> GetSeriesByType(int nTypeID)
+        public static List<CSeries> GetSeriesByType(int nTypeID)
         {
             return m_cData.m_cSeries.Where((x) => x.m_nSeriesTypeID == nTypeID).ToList();
         }
 
-        public List<CIssue> GetIssuesBySeries(int nSeriesID)
+        public static List<CIssue> GetIssuesBySeries(int nSeriesID)
         {
             return m_cData.m_cIssues.Where((x) => x.m_nSeriesID == nSeriesID).ToList();
         }
 
-        public void Add(int type, object obj)
+        public static void Add(int type, object obj)
         {
-            if(type == CConstants.CLASS_SERIES_TYPE)
+            if (type == CConstants.CLASS_SERIES_TYPE)
             {
                 CSeriesType cObj = (CSeriesType)obj;
-                cObj.m_nID = m_cData.m_cSeriesType.Max(x => x.m_nID) + 1;
+                if (m_cData.m_cSeriesType.Count > 0) cObj.m_nID = m_cData.m_cSeriesType.Max(x => x.m_nID) + 1;
+                else cObj.m_nID = 1;
                 m_cData.m_cSeriesType.Add(cObj);
             }
-            if(type == CConstants.CLASS_SERIES)
+            if (type == CConstants.CLASS_SERIES)
             {
                 CSeries cObj = (CSeries)obj;
-                cObj.m_nID = m_cData.m_cSeries.Max(x => x.m_nID) + 1;
+                if (m_cData.m_cSeries.Count > 0) cObj.m_nID = m_cData.m_cSeries.Max(x => x.m_nID) + 1;
+                else cObj.m_nID = 1;
                 m_cData.m_cSeries.Add(cObj);
             }
-            if(type == CConstants.CLASS_ISSUE)
+            if (type == CConstants.CLASS_ISSUE)
             {
                 CIssue cObj = (CIssue)obj;
-                cObj.m_nID = m_cData.m_cIssues.Max(x => x.m_nID) + 1;
+                if (m_cData.m_cIssues.Count > 0) cObj.m_nID = m_cData.m_cIssues.Max(x => x.m_nID) + 1;
+                else cObj.m_nID = 1;
                 m_cData.m_cIssues.Add(cObj);
             }
         }
 
-        public void Remove(int type, object obj)
+        public static void Remove(int type, object obj)
         {
             if (type == CConstants.CLASS_SERIES_TYPE)
             {
@@ -124,6 +129,7 @@ namespace CoreData
             }
 
         }
+    }
     public class CSeriesType
     {
         public int m_nID;

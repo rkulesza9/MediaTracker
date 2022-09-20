@@ -37,10 +37,6 @@
             this.menuOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSave = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSaveAs = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuSeriesType = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuSeries = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuIssues = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -64,8 +60,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.viewToolStripMenuItem});
+            this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -86,61 +81,30 @@
             // menuNew
             // 
             this.menuNew.Name = "menuNew";
-            this.menuNew.Size = new System.Drawing.Size(114, 22);
+            this.menuNew.Size = new System.Drawing.Size(180, 22);
             this.menuNew.Text = "New";
             this.menuNew.Click += new System.EventHandler(this.menuNew_Click);
             // 
             // menuOpen
             // 
             this.menuOpen.Name = "menuOpen";
-            this.menuOpen.Size = new System.Drawing.Size(114, 22);
+            this.menuOpen.Size = new System.Drawing.Size(180, 22);
             this.menuOpen.Text = "Open";
             this.menuOpen.Click += new System.EventHandler(this.menuOpen_Click);
             // 
             // menuSave
             // 
             this.menuSave.Name = "menuSave";
-            this.menuSave.Size = new System.Drawing.Size(114, 22);
+            this.menuSave.Size = new System.Drawing.Size(180, 22);
             this.menuSave.Text = "Save";
             this.menuSave.Click += new System.EventHandler(this.menuSave_Click);
             // 
             // menuSaveAs
             // 
             this.menuSaveAs.Name = "menuSaveAs";
-            this.menuSaveAs.Size = new System.Drawing.Size(114, 22);
+            this.menuSaveAs.Size = new System.Drawing.Size(180, 22);
             this.menuSaveAs.Text = "Save As";
             this.menuSaveAs.Click += new System.EventHandler(this.menuSaveAs_Click);
-            // 
-            // viewToolStripMenuItem
-            // 
-            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuSeriesType,
-            this.menuSeries,
-            this.menuIssues});
-            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.viewToolStripMenuItem.Text = "View";
-            // 
-            // menuSeriesType
-            // 
-            this.menuSeriesType.Name = "menuSeriesType";
-            this.menuSeriesType.Size = new System.Drawing.Size(136, 22);
-            this.menuSeriesType.Text = "Series Types";
-            this.menuSeriesType.Click += new System.EventHandler(this.menuSeriesType_Click);
-            // 
-            // menuSeries
-            // 
-            this.menuSeries.Name = "menuSeries";
-            this.menuSeries.Size = new System.Drawing.Size(136, 22);
-            this.menuSeries.Text = "Series";
-            this.menuSeries.Click += new System.EventHandler(this.menuSeries_Click);
-            // 
-            // menuIssues
-            // 
-            this.menuIssues.Name = "menuIssues";
-            this.menuIssues.Size = new System.Drawing.Size(136, 22);
-            this.menuIssues.Text = "Issues";
-            this.menuIssues.Click += new System.EventHandler(this.menuIssues_Click);
             // 
             // fmMain
             // 
@@ -173,10 +137,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuOpen;
         private System.Windows.Forms.ToolStripMenuItem menuSave;
         private System.Windows.Forms.ToolStripMenuItem menuSaveAs;
-        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem menuSeriesType;
-        private System.Windows.Forms.ToolStripMenuItem menuSeries;
-        private System.Windows.Forms.ToolStripMenuItem menuIssues;
     }
 }
 

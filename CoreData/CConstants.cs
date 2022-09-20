@@ -17,6 +17,10 @@ namespace CoreData
         public const string FILE_DIALOG_MSGBOX_SAVEAS = "File Saved";
         public const string FILE_DIALOG_MSGBOX_SAVE = "File Saved.";
 
+        public const string OBJECT_SERIES_TYPE_NEW = "<New Series Type>";
+        public const string OBJECT_SERIES_NEW = "<New Series>";
+        public const string OBJECT_ISSUE_NEW = "<New Issue>";
+
         public const string STATUS_BAR_TEXT = "Select A File.";
 
         public const int CLASS_SERIES_TYPE = 0;

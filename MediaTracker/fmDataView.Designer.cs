@@ -49,6 +49,13 @@
             this.btnAddIssue = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnRmvIssue = new System.Windows.Forms.ToolStripButton();
+            this.ColumnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -82,6 +89,8 @@
             // 
             // lvSeriesTypes
             // 
+            this.lvSeriesTypes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ColumnHeader1});
             this.lvSeriesTypes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvSeriesTypes.FullRowSelect = true;
             this.lvSeriesTypes.GridLines = true;
@@ -159,6 +168,8 @@
             // 
             // lvSeries
             // 
+            this.lvSeries.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader2});
             this.lvSeries.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvSeries.FullRowSelect = true;
             this.lvSeries.GridLines = true;
@@ -217,6 +228,12 @@
             // 
             // lvIssues
             // 
+            this.lvIssues.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader7});
             this.lvIssues.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvIssues.FullRowSelect = true;
             this.lvIssues.GridLines = true;
@@ -227,7 +244,6 @@
             this.lvIssues.TabIndex = 1;
             this.lvIssues.UseCompatibleStateImageBehavior = false;
             this.lvIssues.View = System.Windows.Forms.View.Details;
-            this.lvIssues.SelectedIndexChanged += new System.EventHandler(this.lvIssues_SelectedIndexChanged);
             // 
             // toolStrip3
             // 
@@ -272,6 +288,35 @@
             this.btnRmvIssue.Size = new System.Drawing.Size(23, 22);
             this.btnRmvIssue.Text = "toolStripButton6";
             this.btnRmvIssue.Click += new System.EventHandler(this.btnRmvIssue_Click);
+            // 
+            // ColumnHeader1
+            // 
+            this.ColumnHeader1.Text = "Series Type";
+            this.ColumnHeader1.Width = 78;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Series Title";
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Issue Title";
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Issue #";
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Viewed";
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Date Viewed";
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Continuing";
             // 
             // fmDataView
             // 
@@ -325,5 +370,12 @@
         private System.Windows.Forms.ToolStripButton btnAddIssue;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton btnRmvIssue;
+        private System.Windows.Forms.ColumnHeader ColumnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
     }
 }
