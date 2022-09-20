@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fmDataView));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lvSeriesTypes = new System.Windows.Forms.ListView();
+            this.ColumnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.btnAddSeriesType = new System.Windows.Forms.ToolStripButton();
@@ -38,24 +38,23 @@
             this.btnRmvSeriesType = new System.Windows.Forms.ToolStripButton();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.lvSeries = new System.Windows.Forms.ListView();
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.btnAddSeries = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnRmvSeries = new System.Windows.Forms.ToolStripButton();
             this.lvIssues = new System.Windows.Forms.ListView();
-            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
-            this.btnAddIssue = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnRmvIssue = new System.Windows.Forms.ToolStripButton();
-            this.ColumnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
+            this.btnAddIssue = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnRmvIssue = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -102,6 +101,11 @@
             this.lvSeriesTypes.UseCompatibleStateImageBehavior = false;
             this.lvSeriesTypes.View = System.Windows.Forms.View.Details;
             this.lvSeriesTypes.SelectedIndexChanged += new System.EventHandler(this.lvSeriesTypes_SelectedIndexChanged);
+            // 
+            // ColumnHeader1
+            // 
+            this.ColumnHeader1.Text = "Series Type";
+            this.ColumnHeader1.Width = 78;
             // 
             // toolStrip1
             // 
@@ -182,6 +186,10 @@
             this.lvSeries.View = System.Windows.Forms.View.Details;
             this.lvSeries.SelectedIndexChanged += new System.EventHandler(this.lvSeries_SelectedIndexChanged);
             // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Series Title";
+            // 
             // toolStrip2
             // 
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -245,6 +253,26 @@
             this.lvIssues.UseCompatibleStateImageBehavior = false;
             this.lvIssues.View = System.Windows.Forms.View.Details;
             // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Issue Title";
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Issue #";
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Viewed";
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Date Viewed";
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Continuing";
+            // 
             // toolStrip3
             // 
             this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -289,42 +317,12 @@
             this.btnRmvIssue.Text = "toolStripButton6";
             this.btnRmvIssue.Click += new System.EventHandler(this.btnRmvIssue_Click);
             // 
-            // ColumnHeader1
-            // 
-            this.ColumnHeader1.Text = "Series Type";
-            this.ColumnHeader1.Width = 78;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Series Title";
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Issue Title";
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Issue #";
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Viewed";
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "Date Viewed";
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "Continuing";
-            // 
             // fmDataView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.splitContainer1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "fmDataView";
             this.Text = "File Name";
             this.splitContainer1.Panel1.ResumeLayout(false);

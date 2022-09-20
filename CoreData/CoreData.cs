@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -59,20 +60,44 @@ namespace CoreData
 
         public static CSeriesType GetSeriesType(int nID)
         {
-            return m_cData.m_cSeriesType.Where((x) =>
+            List<CSeriesType> lsResults = m_cData.m_cSeriesType.Where((x) =>
+           {
+               return x.m_nID == nID;
+           }).ToList();
+
+            if(lsResults.Count > 0)
             {
-                return x.m_nID == nID;
-            }).First();
+                return lsResults[0];
+            } else
+            {
+                return new CSeriesType();
+            }
         }
 
         public static CSeries GetSeries(int nID)
         {
-            return m_cData.m_cSeries.Where((x) => x.m_nID == nID).First();
+            List<CSeries> lsResults = m_cData.m_cSeries.Where((x) => x.m_nID == nID).ToList();
+
+            if(lsResults.Count > 0)
+            {
+                return lsResults[0];
+            } else
+            {
+                return new CSeries();
+            }
         }
 
         public static CIssue GetIssue(int nID)
         {
-            return m_cData.m_cIssues.Where((x) => x.m_nID == nID).First();
+            List<CIssue> lsResults = m_cData.m_cIssues.Where((x) => x.m_nID == nID).ToList();
+            if (lsResults.Count > 0)
+            {
+                return lsResults[0];
+            }
+            else
+            {
+                return new CIssue();
+            }
         }
 
         public static List<CSeries> GetSeriesByType(int nTypeID)
@@ -139,6 +164,22 @@ namespace CoreData
         {
             return m_szSeriesType;
         }
+
+        [Browsable(true)]
+        [Category("System")]
+        [DisplayName("ID")]
+        public int nID
+        {
+            get { return m_nID; }
+        }
+        [Browsable(true)]
+        [Category("Properties")]
+        [DisplayName("Series Type")]
+        public string szSeriesType
+        {
+            get { return m_szSeriesType; }
+            set { m_szSeriesType = value; }
+        }
     }
     public class CSeries
     {
@@ -148,6 +189,28 @@ namespace CoreData
         public override string ToString()
         {
             return m_szSeriesTitle;
+        }
+        [Browsable(true)]
+        [Category("System")]
+        [DisplayName("ID")]
+        public int nID
+        {
+            get { return m_nID; }
+        }
+        [Browsable(true)]
+        [Category("Properties")]
+        [DisplayName("Type")]
+        public string szSeriesType
+        {
+            get { return CCoreData.GetSeriesType(m_nSeriesTypeID).szSeriesType; }
+        }
+        [Browsable(true)]
+        [Category("Properties")]
+        [DisplayName("Series Title")]
+        public string szSeriesTitle
+        {
+            get { return m_szSeriesTitle; }
+            set { m_szSeriesTitle = value;}
         }
     }
     public class CIssue
@@ -164,6 +227,60 @@ namespace CoreData
         public override string ToString()
         {
             return $"[#{m_nIssueNumber}] {m_szIssueTitle}";
+        }
+
+        [Browsable(true)]
+        [Category("System")]
+        [DisplayName("ID")]
+        public int nID
+        {
+            get { return m_nID; }
+        }
+        [Browsable(true)]
+        [Category("Properties")]
+        [DisplayName("Issue Title")]
+        public string szIssueTitle
+        {
+            get
+            {
+                return m_szIssueTitle;
+            }
+            set
+            {
+                m_szIssueTitle = value;
+            }
+        }
+        [Browsable(true)]
+        [Category("Properties")]
+        [DisplayName("Issue #")]
+        public int nIssueNumber
+        {
+            get { return m_nIssueNumber; }
+            set { m_nIssueNumber = value;}
+        }
+        [Browsable(true)]
+        [Category("Properties")]
+        [DisplayName("Viewed")]
+        public bool bViewed
+        {
+            get { return m_bViewed; }
+            set { m_bViewed = value; }
+        }
+        [Browsable(true)]
+        [Category("Properties")]
+        [DisplayName("Date Viewed")]
+        public DateTime dtViewed
+        {
+            get { return m_dtViewed; }
+            set { m_dtViewed = value; }
+        }
+        [Browsable(true)]
+        [Category("Properties")]
+        [DisplayName("Continue Watching")]
+        public bool bContinuing
+        {
+            get { return m_bContinuing; }
+            set { m_bContinuing = value; }
         }
     }
     public class CData

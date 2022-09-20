@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoreData;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,30 @@ namespace MediaTracker
             {
                 c.Width = -2;
             }
+        }
+
+        public static void UpdateListViewItem(ref ListViewItem pItem, CSeriesType pType)
+        {
+            pItem.SubItems.Clear();
+            pItem.Text = pType.m_szSeriesType;
+            pItem.Tag = pType;
+        }
+        public static void UpdateListViewItem(ref ListViewItem pItem, CSeries pSeries)
+        {
+            pItem.SubItems.Clear();
+            pItem.Text = pSeries.m_szSeriesTitle;
+            pItem.Tag = pSeries;
+        }
+
+        public static void UpdateListViewItem(ref ListViewItem pItem, CIssue pIssue)
+        {
+            pItem.SubItems.Clear();
+            pItem.Text = pIssue.m_szIssueTitle;
+            pItem.Tag = pIssue;
+            pItem.SubItems.Add(pIssue.m_nIssueNumber.ToString());
+            pItem.SubItems.Add(pIssue.m_bViewed.ToString());
+            pItem.SubItems.Add(pIssue.m_dtViewed.ToShortDateString());
+            pItem.SubItems.Add(pIssue.m_bContinuing.ToString());
         }
     }
 }

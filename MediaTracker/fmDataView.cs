@@ -16,9 +16,50 @@ namespace MediaTracker
         public fmDataView()
         {
             InitializeComponent();
+            lvSeriesTypes.DoubleClick += LvSeriesTypes_DoubleClick;
+            lvSeries.DoubleClick += LvSeries_DoubleClick;
+            lvIssues.DoubleClick += LvIssues_DoubleClick;
             PopulateSeriesTypes();
 
 
+        }
+
+        private void LvIssues_DoubleClick(object sender, EventArgs e)
+        {
+            if (lvIssues.SelectedItems.Count > 0) { 
+
+                fmProperty fm = new fmProperty();
+                fm.m_pListViewItem = lvIssues.SelectedItems[0];
+                fm.m_nClass = CConstants.CLASS_ISSUE;
+                fm.Initialize();
+                Utils.OpenForm((Form)this.MdiParent, fm);
+            }
+        }
+
+        private void LvSeries_DoubleClick(object sender, EventArgs e)
+        {
+            if (lvSeries.SelectedItems.Count > 0)
+            {
+
+                fmProperty fm = new fmProperty();
+                fm.m_pListViewItem = lvSeries.SelectedItems[0];
+                fm.m_nClass = CConstants.CLASS_SERIES;
+                fm.Initialize();
+                Utils.OpenForm((Form)this.MdiParent, fm);
+            }
+        }
+
+        private void LvSeriesTypes_DoubleClick(object sender, EventArgs e)
+        {
+            if(lvSeriesTypes.SelectedItems.Count > 0)
+            {
+
+                fmProperty fm = new fmProperty();
+                fm.m_pListViewItem = lvSeriesTypes.SelectedItems[0];
+                fm.m_nClass = CConstants.CLASS_SERIES_TYPE;
+                fm.Initialize();
+                Utils.OpenForm(this.MdiParent, fm);
+            }
         }
 
         #region "Populate ListViews"
@@ -28,8 +69,7 @@ namespace MediaTracker
             foreach(CSeriesType pType in CCoreData.m_cData.m_cSeriesType)
             {
                 ListViewItem pItem = new ListViewItem();
-                pItem.Text = pType.m_szSeriesType;
-                pItem.Tag = pType;
+                Utils.UpdateListViewItem(ref pItem, pType);
                 lvSeriesTypes.Items.Add(pItem);
             }
 
@@ -41,8 +81,7 @@ namespace MediaTracker
             foreach(CSeries pSeries in CCoreData.GetSeriesByType(nTypeID))
             {
                 ListViewItem pItem = new ListViewItem();
-                pItem.Text = pSeries.m_szSeriesTitle;
-                pItem.Tag = pSeries;
+                Utils.UpdateListViewItem(ref pItem, pSeries);
                 lvSeries.Items.Add(pItem);
             }
             Utils.RefreshColumnWidth(lvSeries);
@@ -53,12 +92,7 @@ namespace MediaTracker
             foreach(CIssue pIssue in CCoreData.GetIssuesBySeries(nSeriesID))
             {
                 ListViewItem pItem = new ListViewItem();
-                pItem.Text = pIssue.m_szIssueTitle;
-                pItem.Tag = pIssue;
-                pItem.SubItems.Add(pIssue.m_nIssueNumber.ToString());
-                pItem.SubItems.Add(pIssue.m_bViewed.ToString());
-                pItem.SubItems.Add(pIssue.m_dtViewed.ToShortDateString());
-                pItem.SubItems.Add(pIssue.m_bContinuing.ToString());
+                Utils.UpdateListViewItem(ref pItem, pIssue);
                 lvIssues.Items.Add(pItem);
             }
             Utils.RefreshColumnWidth(lvIssues);
@@ -72,8 +106,7 @@ namespace MediaTracker
             CCoreData.Add(CConstants.CLASS_SERIES_TYPE, pType);
 
             ListViewItem pItem = new ListViewItem();
-            pItem.Text = pType.m_szSeriesType;
-            pItem.Tag = pType;
+            Utils.UpdateListViewItem(ref pItem, pType);
             lvSeriesTypes.Items.Insert(0,pItem);
 
             Utils.RefreshColumnWidth(lvSeriesTypes);
@@ -101,8 +134,7 @@ namespace MediaTracker
                 CCoreData.Add(CConstants.CLASS_SERIES, pSeries);
 
                 ListViewItem pItem = new ListViewItem();
-                pItem.Text = pSeries.m_szSeriesTitle;
-                pItem.Tag = pSeries;
+                Utils.UpdateListViewItem(ref pItem, pSeries);
                 lvSeries.Items.Insert(0, pItem);
 
                 Utils.RefreshColumnWidth(lvSeries);
