@@ -168,6 +168,7 @@ namespace CoreData
         [Browsable(true)]
         [Category("System")]
         [DisplayName("ID")]
+        [JsonIgnore]
         public int nID
         {
             get { return m_nID; }
@@ -175,6 +176,7 @@ namespace CoreData
         [Browsable(true)]
         [Category("Properties")]
         [DisplayName("Series Type")]
+        [JsonIgnore]
         public string szSeriesType
         {
             get { return m_szSeriesType; }
@@ -186,6 +188,8 @@ namespace CoreData
         public int m_nID;
         public string m_szSeriesTitle;
         public int m_nSeriesTypeID;
+        public bool m_bFavorite;
+        public bool m_bPinned;
         public override string ToString()
         {
             return m_szSeriesTitle;
@@ -193,6 +197,7 @@ namespace CoreData
         [Browsable(true)]
         [Category("System")]
         [DisplayName("ID")]
+        [JsonIgnore]
         public int nID
         {
             get { return m_nID; }
@@ -200,6 +205,7 @@ namespace CoreData
         [Browsable(true)]
         [Category("Properties")]
         [DisplayName("Type")]
+        [JsonIgnore]
         public string szSeriesType
         {
             get { return CCoreData.GetSeriesType(m_nSeriesTypeID).szSeriesType; }
@@ -207,6 +213,7 @@ namespace CoreData
         [Browsable(true)]
         [Category("Properties")]
         [DisplayName("Series Title")]
+        [JsonIgnore]
         public string szSeriesTitle
         {
             get { return m_szSeriesTitle; }
@@ -232,6 +239,7 @@ namespace CoreData
         [Browsable(true)]
         [Category("System")]
         [DisplayName("ID")]
+        [JsonIgnore]
         public int nID
         {
             get { return m_nID; }
@@ -239,6 +247,7 @@ namespace CoreData
         [Browsable(true)]
         [Category("Properties")]
         [DisplayName("Issue Title")]
+        [JsonIgnore]
         public string szIssueTitle
         {
             get
@@ -253,6 +262,7 @@ namespace CoreData
         [Browsable(true)]
         [Category("Properties")]
         [DisplayName("Issue #")]
+        [JsonIgnore]
         public int nIssueNumber
         {
             get { return m_nIssueNumber; }
@@ -261,6 +271,7 @@ namespace CoreData
         [Browsable(true)]
         [Category("Properties")]
         [DisplayName("Viewed")]
+        [JsonIgnore]
         public bool bViewed
         {
             get { return m_bViewed; }
@@ -269,6 +280,7 @@ namespace CoreData
         [Browsable(true)]
         [Category("Properties")]
         [DisplayName("Date Viewed")]
+        [JsonIgnore]
         public DateTime dtViewed
         {
             get { return m_dtViewed; }
@@ -277,6 +289,7 @@ namespace CoreData
         [Browsable(true)]
         [Category("Properties")]
         [DisplayName("Continue Watching")]
+        [JsonIgnore]
         public bool bContinuing
         {
             get { return m_bContinuing; }

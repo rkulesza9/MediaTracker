@@ -66,7 +66,13 @@ namespace MediaTracker
         private void PopulateSeriesTypes()
         {
             lvSeriesTypes.Items.Clear();
-            foreach(CSeriesType pType in CCoreData.m_cData.m_cSeriesType)
+
+            List<CSeriesType> pAllIssues = CCoreData.m_cData.m_cSeriesType.OrderBy((x) =>
+            {
+                return x.m_szSeriesType;
+            }).ToList();
+
+            foreach (CSeriesType pType in CCoreData.m_cData.m_cSeriesType)
             {
                 ListViewItem pItem = new ListViewItem();
                 Utils.UpdateListViewItem(ref pItem, pType);
@@ -78,7 +84,13 @@ namespace MediaTracker
         private void PopulateSeries(int nTypeID)
         {
             lvSeries.Items.Clear();
-            foreach(CSeries pSeries in CCoreData.GetSeriesByType(nTypeID))
+
+            List<CSeries> pAllSeries = CCoreData.GetSeriesByType(nTypeID).OrderBy((x) =>
+            {
+                return x.m_szSeriesTitle;
+            }).ToList();
+
+            foreach (CSeries pSeries in pAllSeries)
             {
                 ListViewItem pItem = new ListViewItem();
                 Utils.UpdateListViewItem(ref pItem, pSeries);
@@ -89,7 +101,13 @@ namespace MediaTracker
         private void PopulateIssues(int nSeriesID)
         {
             lvIssues.Items.Clear();
-            foreach(CIssue pIssue in CCoreData.GetIssuesBySeries(nSeriesID))
+
+            List<CIssue> pAllIssues = CCoreData.GetIssuesBySeries(nSeriesID).OrderByDescending((x) =>
+            {
+                return x.m_nIssueNumber;
+            }).ToList();
+
+            foreach (CIssue pIssue in pAllIssues)
             {
                 ListViewItem pItem = new ListViewItem();
                 Utils.UpdateListViewItem(ref pItem, pIssue);
