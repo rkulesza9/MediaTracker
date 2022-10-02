@@ -36,7 +36,7 @@ namespace MediaTracker
             SortOrder pSortOrder = ((ListViewItemSorter)lvIssues.ListViewItemSorter).pSortOrder;
             if (pSortOrder == SortOrder.Ascending) pSortOrder = SortOrder.Descending;
             else pSortOrder = SortOrder.Ascending;
-            lvIssues.ListViewItemSorter = new ListViewItemSorter(CConstants.LISTVIEW_ISSUE, 0, pSortOrder);
+            lvIssues.ListViewItemSorter = new ListViewItemSorter(CConstants.LISTVIEW_ISSUE, e.Column, pSortOrder);
 
         }
 
@@ -45,7 +45,7 @@ namespace MediaTracker
             SortOrder pSortOrder = ((ListViewItemSorter)lvSeries.ListViewItemSorter).pSortOrder;
             if (pSortOrder == SortOrder.Ascending) pSortOrder = SortOrder.Descending;
             else pSortOrder = SortOrder.Ascending;
-            lvSeries.ListViewItemSorter = new ListViewItemSorter(CConstants.LISTVIEW_SERIES, 0, pSortOrder);
+            lvSeries.ListViewItemSorter = new ListViewItemSorter(CConstants.LISTVIEW_SERIES, e.Column, pSortOrder);
 
         }
 
@@ -54,7 +54,7 @@ namespace MediaTracker
             SortOrder pSortOrder = ((ListViewItemSorter)lvSeriesTypes.ListViewItemSorter).pSortOrder;
             if (pSortOrder == SortOrder.Ascending) pSortOrder = SortOrder.Descending;
             else pSortOrder = SortOrder.Ascending;
-            lvSeriesTypes.ListViewItemSorter = new ListViewItemSorter(CConstants.LISTVIEW_SERIES_TYPE, 0, pSortOrder);
+            lvSeriesTypes.ListViewItemSorter = new ListViewItemSorter(CConstants.LISTVIEW_SERIES_TYPE, e.Column, pSortOrder);
 
         }
 

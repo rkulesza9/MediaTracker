@@ -157,8 +157,8 @@ namespace CoreData
     }
     public class CDataModel
     {
-        public int m_nID;
-        public string m_szNotes;
+        public int m_nID = -1;
+        public string m_szNotes = "";
 
         [Browsable(true)]
         [Category("System")]
@@ -201,10 +201,10 @@ namespace CoreData
     }
     public class CSeries : CDataModel
     {
-        public string m_szSeriesTitle;
-        public int m_nSeriesTypeID;
-        public bool m_bFavorite;
-        public bool m_bPinned;
+        public string m_szSeriesTitle="";
+        public int m_nSeriesTypeID=-1;
+        public bool m_bFavorite=false;
+        public bool m_bPinned=false;
 
         public override string ToString()
         {
@@ -230,14 +230,14 @@ namespace CoreData
     }
     public class CIssue : CDataModel
     {
-        public int m_nIssueNumber;
-        public string m_szIssueTitle;
-        public bool m_bViewed;
-        public DateTime m_dtViewed;
-        public bool m_bContinuing;
-        public string m_szURL;
+        public int m_nIssueNumber=1;
+        public string m_szIssueTitle="";
+        public bool m_bViewed = false;
+        public DateTime m_dtViewed = DateTime.Now;
+        public bool m_bContinuing = false;
+        public string m_szURL = "";
 
-        public int m_nSeriesID;
+        public int m_nSeriesID = -1;
 
         public override string ToString()
         {
