@@ -55,6 +55,10 @@
             this.btnAddIssue = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnRmvIssue = new System.Windows.Forms.ToolStripButton();
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lblViewOnline = new System.Windows.Forms.ToolStripLabel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -89,7 +93,8 @@
             // lvSeriesTypes
             // 
             this.lvSeriesTypes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ColumnHeader1});
+            this.ColumnHeader1,
+            this.columnHeader8});
             this.lvSeriesTypes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvSeriesTypes.FullRowSelect = true;
             this.lvSeriesTypes.GridLines = true;
@@ -173,7 +178,8 @@
             // lvSeries
             // 
             this.lvSeries.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader2});
+            this.columnHeader2,
+            this.columnHeader9});
             this.lvSeries.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvSeries.FullRowSelect = true;
             this.lvSeries.GridLines = true;
@@ -241,7 +247,8 @@
             this.columnHeader4,
             this.columnHeader5,
             this.columnHeader6,
-            this.columnHeader7});
+            this.columnHeader7,
+            this.columnHeader10});
             this.lvIssues.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvIssues.FullRowSelect = true;
             this.lvIssues.GridLines = true;
@@ -279,7 +286,8 @@
             this.toolStripLabel3,
             this.btnAddIssue,
             this.toolStripSeparator3,
-            this.btnRmvIssue});
+            this.btnRmvIssue,
+            this.lblViewOnline});
             this.toolStrip3.Location = new System.Drawing.Point(0, 0);
             this.toolStrip3.Name = "toolStrip3";
             this.toolStrip3.Size = new System.Drawing.Size(524, 25);
@@ -316,6 +324,27 @@
             this.btnRmvIssue.Size = new System.Drawing.Size(23, 22);
             this.btnRmvIssue.Text = "toolStripButton6";
             this.btnRmvIssue.Click += new System.EventHandler(this.btnRmvIssue_Click);
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Notes";
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Notes";
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "Notes";
+            // 
+            // lblViewOnline
+            // 
+            this.lblViewOnline.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.lblViewOnline.IsLink = true;
+            this.lblViewOnline.Name = "lblViewOnline";
+            this.lblViewOnline.Size = new System.Drawing.Size(70, 22);
+            this.lblViewOnline.Text = "View Online";
+            this.lblViewOnline.Click += new System.EventHandler(this.lblViewOnline_Click);
             // 
             // fmDataView
             // 
@@ -376,5 +405,9 @@
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.ToolStripLabel lblViewOnline;
     }
 }

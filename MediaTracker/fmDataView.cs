@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,8 +20,41 @@ namespace MediaTracker
             lvSeriesTypes.DoubleClick += LvSeriesTypes_DoubleClick;
             lvSeries.DoubleClick += LvSeries_DoubleClick;
             lvIssues.DoubleClick += LvIssues_DoubleClick;
-            PopulateSeriesTypes();
+            lvSeriesTypes.ColumnClick += LvSeriesTypes_ColumnClick;
+            lvSeries.ColumnClick += LvSeries_ColumnClick;
+            lvIssues.ColumnClick += LvIssues_ColumnClick;
 
+            PopulateSeriesTypes();
+            lvSeriesTypes.ListViewItemSorter = new ListViewItemSorter(CConstants.LISTVIEW_SERIES_TYPE, 0, SortOrder.Ascending);
+            lvSeries.ListViewItemSorter = new ListViewItemSorter(CConstants.LISTVIEW_SERIES, 0, SortOrder.Ascending);
+            lvIssues.ListViewItemSorter = new ListViewItemSorter(CConstants.LISTVIEW_ISSUE, 0, SortOrder.Ascending);
+
+        }
+
+        private void LvIssues_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            SortOrder pSortOrder = ((ListViewItemSorter)lvIssues.ListViewItemSorter).pSortOrder;
+            if (pSortOrder == SortOrder.Ascending) pSortOrder = SortOrder.Descending;
+            else pSortOrder = SortOrder.Ascending;
+            lvIssues.ListViewItemSorter = new ListViewItemSorter(CConstants.LISTVIEW_ISSUE, 0, pSortOrder);
+
+        }
+
+        private void LvSeries_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            SortOrder pSortOrder = ((ListViewItemSorter)lvSeries.ListViewItemSorter).pSortOrder;
+            if (pSortOrder == SortOrder.Ascending) pSortOrder = SortOrder.Descending;
+            else pSortOrder = SortOrder.Ascending;
+            lvSeries.ListViewItemSorter = new ListViewItemSorter(CConstants.LISTVIEW_SERIES, 0, pSortOrder);
+
+        }
+
+        private void LvSeriesTypes_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            SortOrder pSortOrder = ((ListViewItemSorter)lvSeriesTypes.ListViewItemSorter).pSortOrder;
+            if (pSortOrder == SortOrder.Ascending) pSortOrder = SortOrder.Descending;
+            else pSortOrder = SortOrder.Ascending;
+            lvSeriesTypes.ListViewItemSorter = new ListViewItemSorter(CConstants.LISTVIEW_SERIES_TYPE, 0, pSortOrder);
 
         }
 
@@ -215,6 +249,15 @@ namespace MediaTracker
             {
                 CSeries pSeries = (CSeries)(lvSeries.SelectedItems[0].Tag);
                 PopulateIssues(pSeries.m_nID);
+            }
+        }
+
+        private void lblViewOnline_Click(object sender, EventArgs e)
+        {
+            if (lvIssues.SelectedItems.Count > 0)
+            {
+                CIssue pIssue = (CIssue)(lvIssues.SelectedItems[0].Tag);
+                Process.Start("firefox.exe", pIssue.m_szURL);
             }
         }
     }

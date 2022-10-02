@@ -155,15 +155,10 @@ namespace CoreData
 
         }
     }
-    public class CSeriesType
+    public class CDataModel
     {
         public int m_nID;
-        public string m_szSeriesType;
-
-        public override string ToString()
-        {
-            return m_szSeriesType;
-        }
+        public string m_szNotes;
 
         [Browsable(true)]
         [Category("System")]
@@ -173,6 +168,26 @@ namespace CoreData
         {
             get { return m_nID; }
         }
+
+        [Browsable(true)]
+        [Category("Properties")]
+        [DisplayName("Notes")]
+        [JsonIgnore]
+        public string szNotes
+        {
+            get { return m_szNotes; }
+            set { m_szNotes = value; }
+        }
+    }
+    public class CSeriesType : CDataModel
+    {
+        public string m_szSeriesType;
+
+        public override string ToString()
+        {
+            return m_szSeriesType;
+        }
+
         [Browsable(true)]
         [Category("Properties")]
         [DisplayName("Series Type")]
@@ -182,25 +197,18 @@ namespace CoreData
             get { return m_szSeriesType; }
             set { m_szSeriesType = value; }
         }
+
     }
-    public class CSeries
+    public class CSeries : CDataModel
     {
-        public int m_nID;
         public string m_szSeriesTitle;
         public int m_nSeriesTypeID;
         public bool m_bFavorite;
         public bool m_bPinned;
+
         public override string ToString()
         {
             return m_szSeriesTitle;
-        }
-        [Browsable(true)]
-        [Category("System")]
-        [DisplayName("ID")]
-        [JsonIgnore]
-        public int nID
-        {
-            get { return m_nID; }
         }
         [Browsable(true)]
         [Category("Properties")]
@@ -217,32 +225,23 @@ namespace CoreData
         public string szSeriesTitle
         {
             get { return m_szSeriesTitle; }
-            set { m_szSeriesTitle = value;}
+            set { m_szSeriesTitle = value; }
         }
     }
-    public class CIssue
+    public class CIssue : CDataModel
     {
-        public int m_nID;
         public int m_nIssueNumber;
         public string m_szIssueTitle;
         public bool m_bViewed;
         public DateTime m_dtViewed;
         public bool m_bContinuing;
+        public string m_szURL;
 
         public int m_nSeriesID;
 
         public override string ToString()
         {
             return $"[#{m_nIssueNumber}] {m_szIssueTitle}";
-        }
-
-        [Browsable(true)]
-        [Category("System")]
-        [DisplayName("ID")]
-        [JsonIgnore]
-        public int nID
-        {
-            get { return m_nID; }
         }
         [Browsable(true)]
         [Category("Properties")]
@@ -294,6 +293,15 @@ namespace CoreData
         {
             get { return m_bContinuing; }
             set { m_bContinuing = value; }
+        }
+        [Browsable(true)]
+        [Category("Properties")]
+        [DisplayName("Link")]
+        [JsonIgnore]
+        public string szURl
+        {
+            get { return m_szURL; }
+            set { m_szURL = value; }
         }
     }
     public class CData

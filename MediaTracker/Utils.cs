@@ -31,12 +31,14 @@ namespace MediaTracker
             pItem.SubItems.Clear();
             pItem.Text = pType.m_szSeriesType;
             pItem.Tag = pType;
+            pItem.SubItems.Add(pType.m_szNotes);
         }
         public static void UpdateListViewItem(ref ListViewItem pItem, CSeries pSeries)
         {
             pItem.SubItems.Clear();
             pItem.Text = pSeries.m_szSeriesTitle;
             pItem.Tag = pSeries;
+            pItem.SubItems.Add(pSeries.m_szNotes);
         }
 
         public static void UpdateListViewItem(ref ListViewItem pItem, CIssue pIssue)
@@ -48,6 +50,7 @@ namespace MediaTracker
             pItem.SubItems.Add(pIssue.m_bViewed.ToString());
             pItem.SubItems.Add(pIssue.m_dtViewed.ToShortDateString());
             pItem.SubItems.Add(pIssue.m_bContinuing.ToString());
+            pItem.SubItems.Add(pIssue.m_szNotes);
         }
     }
 }

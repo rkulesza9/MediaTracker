@@ -26,5 +26,9 @@ namespace CoreData
         public const int CLASS_SERIES_TYPE = 0;
         public const int CLASS_SERIES = 1;
         public const int CLASS_ISSUE = 2;
+
+        public const int LISTVIEW_SERIES_TYPE = 0;
+        public const int LISTVIEW_SERIES = 1;
+        public const int LISTVIEW_ISSUE = 2;
     }
 }
