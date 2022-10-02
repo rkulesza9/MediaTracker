@@ -28,8 +28,8 @@ namespace MediaTracker
         {
             int nSort = 1;
 
-            if (m_pSortOrder == SortOrder.Ascending) nSort = -1;
-            else nSort = 1;
+            if (m_pSortOrder == SortOrder.Ascending) nSort = 1;
+            else nSort = -1;
 
             switch (m_nListViewID)
             {
@@ -41,6 +41,9 @@ namespace MediaTracker
                 case CConstants.LISTVIEW_SERIES:
                     CSeries xSeries = (CSeries)GetModel(x);
                     CSeries ySeries = (CSeries)GetModel(y);
+
+                    int nPinned = xSeries.m_bPinned.CompareTo(ySeries.m_bPinned);
+                    if (nPinned != 0) return -1*nPinned;
 
                     return nSort * xSeries.m_szSeriesTitle.CompareTo(ySeries.m_szSeriesTitle);
                 case CConstants.LISTVIEW_ISSUE:

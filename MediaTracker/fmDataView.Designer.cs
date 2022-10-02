@@ -31,6 +31,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lvSeriesTypes = new System.Windows.Forms.ListView();
             this.ColumnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.btnAddSeriesType = new System.Windows.Forms.ToolStripButton();
@@ -39,26 +40,28 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.lvSeries = new System.Windows.Forms.ListView();
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.btnAddSeries = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnRmvSeries = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnPin = new System.Windows.Forms.ToolStripButton();
             this.lvIssues = new System.Windows.Forms.ListView();
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
             this.btnAddIssue = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnRmvIssue = new System.Windows.Forms.ToolStripButton();
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lblViewOnline = new System.Windows.Forms.ToolStripLabel();
+            this.btnFavorite = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -111,6 +114,10 @@
             // 
             this.ColumnHeader1.Text = "Series Type";
             this.ColumnHeader1.Width = 78;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Notes";
             // 
             // toolStrip1
             // 
@@ -196,13 +203,20 @@
             // 
             this.columnHeader2.Text = "Series Title";
             // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Notes";
+            // 
             // toolStrip2
             // 
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel2,
             this.btnAddSeries,
             this.toolStripSeparator2,
-            this.btnRmvSeries});
+            this.btnRmvSeries,
+            this.toolStripSeparator4,
+            this.btnPin,
+            this.btnFavorite});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(524, 25);
@@ -239,6 +253,21 @@
             this.btnRmvSeries.Size = new System.Drawing.Size(23, 22);
             this.btnRmvSeries.Text = "toolStripButton4";
             this.btnRmvSeries.Click += new System.EventHandler(this.btnRmvSeries_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnPin
+            // 
+            this.btnPin.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnPin.Image = global::MediaTracker.Properties.Resources.office_push_pin;
+            this.btnPin.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnPin.Name = "btnPin";
+            this.btnPin.Size = new System.Drawing.Size(23, 22);
+            this.btnPin.Text = "Pin";
+            this.btnPin.Click += new System.EventHandler(this.btnPin_Click);
             // 
             // lvIssues
             // 
@@ -279,6 +308,10 @@
             // columnHeader7
             // 
             this.columnHeader7.Text = "Continuing";
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "Notes";
             // 
             // toolStrip3
             // 
@@ -325,18 +358,6 @@
             this.btnRmvIssue.Text = "toolStripButton6";
             this.btnRmvIssue.Click += new System.EventHandler(this.btnRmvIssue_Click);
             // 
-            // columnHeader8
-            // 
-            this.columnHeader8.Text = "Notes";
-            // 
-            // columnHeader9
-            // 
-            this.columnHeader9.Text = "Notes";
-            // 
-            // columnHeader10
-            // 
-            this.columnHeader10.Text = "Notes";
-            // 
             // lblViewOnline
             // 
             this.lblViewOnline.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -345,6 +366,16 @@
             this.lblViewOnline.Size = new System.Drawing.Size(70, 22);
             this.lblViewOnline.Text = "View Online";
             this.lblViewOnline.Click += new System.EventHandler(this.lblViewOnline_Click);
+            // 
+            // btnFavorite
+            // 
+            this.btnFavorite.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnFavorite.Image = global::MediaTracker.Properties.Resources.star;
+            this.btnFavorite.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFavorite.Name = "btnFavorite";
+            this.btnFavorite.Size = new System.Drawing.Size(23, 22);
+            this.btnFavorite.Text = "Favorite";
+            this.btnFavorite.Click += new System.EventHandler(this.btnFavorite_Click);
             // 
             // fmDataView
             // 
@@ -409,5 +440,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.ToolStripLabel lblViewOnline;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripButton btnPin;
+        private System.Windows.Forms.ToolStripButton btnFavorite;
     }
 }

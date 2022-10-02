@@ -13,7 +13,7 @@ namespace CoreData
 {
     public class CCoreData
     {
-        public static string m_szJsonFilePath = "default.json";
+        public static string m_szJsonFilePath = "";
         public static CData m_cData;
 
         public static void Initialize()

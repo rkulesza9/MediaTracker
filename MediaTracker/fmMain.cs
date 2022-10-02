@@ -82,7 +82,7 @@ namespace MediaTracker
 
         private void menuSave_Click(object sender, EventArgs e)
         {
-            if(CCoreData.m_cData != null)
+            if(CCoreData.m_cData != null && CCoreData.m_szJsonFilePath != "")
             {
                 CCoreData.Save();
 
@@ -96,28 +96,28 @@ namespace MediaTracker
 
         private void menuSaveAs_Click(object sender, EventArgs e)
         {
-            SaveFileDialog ofd = new SaveFileDialog();
-            ofd.Filter = CConstants.FILE_DIALOG_FILTER;
-            ofd.Title = CConstants.FILE_DIALOG_TITLE_SAVEAS;
-            ofd.InitialDirectory = Environment.SpecialFolder.UserProfile.ToString();
-            DialogResult result = ofd.ShowDialog();
-
-            if (result == DialogResult.OK && CCoreData.m_cData != null)
+            if (CCoreData.m_cData != null && CCoreData.m_szJsonFilePath != "")
             {
-                CCoreData.m_szJsonFilePath = ofd.FileName;
-                CCoreData.Save();
-                lblFilename.Text = ofd.FileName;
+                SaveFileDialog ofd = new SaveFileDialog();
+                ofd.Filter = CConstants.FILE_DIALOG_FILTER;
+                ofd.Title = CConstants.FILE_DIALOG_TITLE_SAVEAS;
+                ofd.InitialDirectory = Environment.SpecialFolder.UserProfile.ToString();
+                DialogResult result = ofd.ShowDialog();
 
-                MessageBox.Show(CConstants.FILE_DIALOG_MSGBOX_SAVEAS); 
-                
-                if (m_fmDataView == null || m_fmDataView.IsDisposed) m_fmDataView = new fmDataView();
-                m_fmDataView.Text = ofd.FileName;
-                Utils.OpenForm(this, m_fmDataView);
-            }
-            else
-            {
+                if (result == DialogResult.OK && CCoreData.m_cData != null)
+                {
+                    CCoreData.m_szJsonFilePath = ofd.FileName;
+                    CCoreData.Save();
+                    lblFilename.Text = ofd.FileName;
 
+                    MessageBox.Show(CConstants.FILE_DIALOG_MSGBOX_SAVEAS);
+
+                    if (m_fmDataView == null || m_fmDataView.IsDisposed) m_fmDataView = new fmDataView();
+                    m_fmDataView.Text = ofd.FileName;
+                    Utils.OpenForm(this, m_fmDataView);
+                }
             }
+
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using CoreData;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,6 +40,10 @@ namespace MediaTracker
             pItem.Text = pSeries.m_szSeriesTitle;
             pItem.Tag = pSeries;
             pItem.SubItems.Add(pSeries.m_szNotes);
+
+            if (pSeries.m_bPinned) pItem.BackColor = Color.Yellow;
+            if (pSeries.m_bFavorite) pItem.BackColor = Color.LightBlue;
+            if (pSeries.m_bPinned && pSeries.m_bFavorite) pItem.BackColor = Color.LightGreen;
         }
 
         public static void UpdateListViewItem(ref ListViewItem pItem, CIssue pIssue)

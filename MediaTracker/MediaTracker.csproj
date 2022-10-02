@@ -142,6 +142,8 @@
   <ItemGroup>
     <Content Include="62845television_109243.ico" />
     <Content Include="app_icon.ico" />
+    <None Include="Resources\star.png" />
+    <None Include="Resources\office-push-pin.png" />
     <None Include="Resources\62845television_109243.ico" />
     <None Include="Resources\app_icon1.ico" />
     <None Include="Resources\icons8-tv-show-100.png" />

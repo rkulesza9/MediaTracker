@@ -257,7 +257,29 @@ namespace MediaTracker
             if (lvIssues.SelectedItems.Count > 0)
             {
                 CIssue pIssue = (CIssue)(lvIssues.SelectedItems[0].Tag);
-                Process.Start("firefox.exe", pIssue.m_szURL);
+                Process.Start(CConstants.BROWSER_FIREFOX, pIssue.m_szURL);
+            }
+        }
+
+        private void btnPin_Click(object sender, EventArgs e)
+        {
+            if(lvSeries.SelectedItems.Count > 0)
+            {
+                CSeries pSeries = (CSeries) (lvSeries.SelectedItems[0].Tag);
+                pSeries.m_bPinned = !pSeries.m_bPinned;
+
+                PopulateSeries(pSeries.m_nSeriesTypeID);
+            }
+        }
+
+        private void btnFavorite_Click(object sender, EventArgs e)
+        {
+            if(lvSeries.SelectedItems.Count > 0)
+            {
+                CSeries pSeries = (CSeries)(lvSeries.SelectedItems[0].Tag);
+                pSeries.m_bFavorite = !pSeries.m_bFavorite;
+
+                PopulateSeries(pSeries.m_nSeriesTypeID);
             }
         }
     }
