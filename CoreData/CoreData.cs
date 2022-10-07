@@ -279,6 +279,7 @@ namespace CoreData
         [Browsable(true)]
         [Category("Properties")]
         [DisplayName("Date Viewed")]
+        [TypeConverter(typeof(CDateTypeConverter))]
         [JsonIgnore]
         public DateTime dtViewed
         {

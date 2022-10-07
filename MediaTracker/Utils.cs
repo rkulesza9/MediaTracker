@@ -53,7 +53,10 @@ namespace MediaTracker
             pItem.Tag = pIssue;
             pItem.SubItems.Add(pIssue.m_nIssueNumber.ToString());
             pItem.SubItems.Add(pIssue.m_bViewed.ToString());
-            pItem.SubItems.Add(pIssue.m_dtViewed.ToShortDateString());
+
+            string szDate = pIssue.m_dtViewed.ToShortDateString();
+            if (pIssue.m_dtViewed.Equals(DateTime.MinValue)) szDate = "";
+            pItem.SubItems.Add(szDate);
             pItem.SubItems.Add(pIssue.m_bContinuing.ToString());
             pItem.SubItems.Add(pIssue.m_szNotes);
         }
