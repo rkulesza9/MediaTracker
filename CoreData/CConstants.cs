@@ -32,6 +32,6 @@ namespace CoreData
         public const int LISTVIEW_ISSUE = 2;
 
         public const string BROWSER_FIREFOX = "firefox.exe";
-        
+        public const string SETTINGS_LAST_OPENED_FILE = "LastOpenedFile";
     }
 }

@@ -158,6 +158,7 @@ namespace CoreData
     public class CDataModel
     {
         public int m_nID = -1;
+        public DateTime m_dtLastUpdated = DateTime.Now;
         public string m_szNotes = "";
 
         [Browsable(true)]
@@ -195,7 +196,7 @@ namespace CoreData
         public string szSeriesType
         {
             get { return m_szSeriesType; }
-            set { m_szSeriesType = value; }
+            set { m_szSeriesType = value; m_dtLastUpdated = DateTime.Now; }
         }
 
     }
@@ -225,7 +226,7 @@ namespace CoreData
         public string szSeriesTitle
         {
             get { return m_szSeriesTitle; }
-            set { m_szSeriesTitle = value; }
+            set { m_szSeriesTitle = value; m_dtLastUpdated = DateTime.Now; }
         }
     }
     public class CIssue : CDataModel
@@ -255,7 +256,8 @@ namespace CoreData
             }
             set
             {
-                m_szIssueTitle = value;
+                m_szIssueTitle = value; 
+                m_dtLastUpdated = DateTime.Now;
             }
         }
         [Browsable(true)]
@@ -265,7 +267,7 @@ namespace CoreData
         public int nIssueNumber
         {
             get { return m_nIssueNumber; }
-            set { m_nIssueNumber = value;}
+            set { m_nIssueNumber = value; m_dtLastUpdated = DateTime.Now; }
         }
         [Browsable(true)]
         [Category("Properties")]
@@ -274,7 +276,7 @@ namespace CoreData
         public bool bViewed
         {
             get { return m_bViewed; }
-            set { m_bViewed = value; }
+            set { m_bViewed = value; m_dtLastUpdated = DateTime.Now; }
         }
         [Browsable(true)]
         [Category("Properties")]
@@ -284,7 +286,7 @@ namespace CoreData
         public DateTime dtViewed
         {
             get { return m_dtViewed; }
-            set { m_dtViewed = value; }
+            set { m_dtViewed = value; m_dtLastUpdated = DateTime.Now; }
         }
         [Browsable(true)]
         [Category("Properties")]
@@ -293,7 +295,7 @@ namespace CoreData
         public bool bContinuing
         {
             get { return m_bContinuing; }
-            set { m_bContinuing = value; }
+            set { m_bContinuing = value; m_dtLastUpdated = DateTime.Now; }
         }
         [Browsable(true)]
         [Category("Properties")]
@@ -302,7 +304,7 @@ namespace CoreData
         public string szURl
         {
             get { return m_szURL; }
-            set { m_szURL = value; }
+            set { m_szURL = value; m_dtLastUpdated = DateTime.Now; }
         }
     }
     public class CData

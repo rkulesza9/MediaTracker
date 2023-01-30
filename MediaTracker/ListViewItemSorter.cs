@@ -62,7 +62,10 @@ namespace MediaTracker
                     if (m_nColumn == 5) return nSort * xIssue.m_szNotes.CompareTo(yIssue.m_szNotes);
                     return -1;
                 default:
-                    return nSort * ((ListViewItem)x).Text.CompareTo(((ListViewItem)y).Text);
+                    CDataModel xData = (CDataModel)GetModel(x);
+                    CDataModel yData = (CDataModel)GetModel(y);
+
+                    return nSort * xData.m_dtLastUpdated.CompareTo(yData.m_dtLastUpdated);
             }
         }
 

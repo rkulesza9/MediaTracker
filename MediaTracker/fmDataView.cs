@@ -161,6 +161,8 @@ namespace MediaTracker
             Utils.UpdateListViewItem(ref pItem, pType);
             lvSeriesTypes.Items.Insert(0,pItem);
 
+            lvSeriesTypes.ListViewItemSorter = new ListViewItemSorter(CConstants.LISTVIEW_SERIES_TYPE, -1, SortOrder.Descending);
+
             Utils.RefreshColumnWidth(lvSeriesTypes);
         }
 
@@ -188,6 +190,8 @@ namespace MediaTracker
                 ListViewItem pItem = new ListViewItem();
                 Utils.UpdateListViewItem(ref pItem, pSeries);
                 lvSeries.Items.Insert(0, pItem);
+
+                lvSeries.ListViewItemSorter = new ListViewItemSorter(CConstants.LISTVIEW_SERIES, -1, SortOrder.Descending);
 
                 Utils.RefreshColumnWidth(lvSeries);
             }
@@ -219,6 +223,7 @@ namespace MediaTracker
                 pItem.Tag = pIssue;
                 lvIssues.Items.Insert(0, pItem);
 
+                lvIssues.ListViewItemSorter = new ListViewItemSorter(CConstants.LISTVIEW_ISSUE, -1, SortOrder.Descending);
                 Utils.RefreshColumnWidth(lvIssues);
             }
         }

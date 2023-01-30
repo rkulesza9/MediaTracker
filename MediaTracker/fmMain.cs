@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,6 +22,29 @@ namespace MediaTracker
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormClosed += FmMain_FormClosed;
             lblFilename.Text = CConstants.STATUS_BAR_TEXT;
+
+            OpenLastOpenedFile();
+        }
+
+        private void OpenLastOpenedFile()
+        {
+            string szFilename = (string)Properties.Settings.Default[CConstants.SETTINGS_LAST_OPENED_FILE];
+            if (szFilename != null && !szFilename.Equals(""))
+            {
+                CCoreData.m_szJsonFilePath = szFilename;
+                CCoreData.Initialize();
+                lblFilename.Text = szFilename;
+
+                if (m_fmDataView == null || m_fmDataView.IsDisposed) m_fmDataView = new fmDataView();
+                m_fmDataView.Text = szFilename;
+                Utils.OpenForm(this, m_fmDataView);
+            }
+        }
+
+        private void SaveLastOpenedFile(string filename)
+        {
+            Properties.Settings.Default[CConstants.SETTINGS_LAST_OPENED_FILE] = filename;
+            Properties.Settings.Default.Save();
         }
 
         private void FmMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -42,10 +66,9 @@ namespace MediaTracker
                 CCoreData.m_szJsonFilePath = ofd.FileName;
                 CCoreData.Initialize();
                 lblFilename.Text = ofd.FileName;
+                SaveLastOpenedFile(ofd.FileName);
 
-                MessageBox.Show(CConstants.FILE_DIALOG_MSGBOX_NEW);
-
-                if(m_fmDataView == null || m_fmDataView.IsDisposed) m_fmDataView = new fmDataView();
+                if (m_fmDataView == null || m_fmDataView.IsDisposed) m_fmDataView = new fmDataView();
                 m_fmDataView.Text = ofd.FileName;
                 Utils.OpenForm(this, m_fmDataView);
             } else
@@ -67,8 +90,8 @@ namespace MediaTracker
                 CCoreData.m_szJsonFilePath = ofd.FileName;
                 CCoreData.Initialize();
                 lblFilename.Text = ofd.FileName;
+                SaveLastOpenedFile(ofd.FileName);
 
-                MessageBox.Show(CConstants.FILE_DIALOG_MSGBOX_OPEN);
 
                 if (m_fmDataView == null || m_fmDataView.IsDisposed) m_fmDataView = new fmDataView();
                 m_fmDataView.Text = ofd.FileName;
@@ -109,6 +132,7 @@ namespace MediaTracker
                     CCoreData.m_szJsonFilePath = ofd.FileName;
                     CCoreData.Save();
                     lblFilename.Text = ofd.FileName;
+                    SaveLastOpenedFile(ofd.FileName);
 
                     MessageBox.Show(CConstants.FILE_DIALOG_MSGBOX_SAVEAS);
 
