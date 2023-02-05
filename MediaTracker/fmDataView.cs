@@ -1,5 +1,6 @@
 ﻿using CoreData;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -115,11 +116,22 @@ namespace MediaTracker
 
             Utils.RefreshColumnWidth(lvSeriesTypes);
         }
-        private void PopulateSeries(int nTypeID)
+        private void PopulateSeries(int nTypeID, string szSearch="")
         {
             lvSeries.Items.Clear();
 
-            List<CSeries> pAllSeries = CCoreData.GetSeriesByType(nTypeID).OrderBy((x) =>
+            List<CSeries> pAllSeries = CCoreData.GetSeriesByType(nTypeID).Where((x) =>
+            {
+                szSearch = szSearch.ToLower();
+                bool b = true;
+                string[] szSearchTerms = szSearch.Split(new char[] { ' ', ',' });
+                foreach(string szTerm in szSearchTerms)
+                {
+                    string szText = $"{x.m_szSeriesTitle} {x.m_szNotes}".ToLower();
+                    b = b && szText.Contains(szTerm);
+                }
+                return b;
+            }).OrderBy((x) =>
             {
                 return x.m_szSeriesTitle;
             }).ToList();
@@ -285,6 +297,21 @@ namespace MediaTracker
                 pSeries.m_bFavorite = !pSeries.m_bFavorite;
 
                 PopulateSeries(pSeries.m_nSeriesTypeID);
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (lvSeriesTypes.SelectedItems.Count == 0) return;
+
+                CSeriesType pType = (CSeriesType)lvSeriesTypes.SelectedItems[0].Tag;
+                PopulateSeries(pType.m_nID, tbSearch.Text);
+            }catch(Exception ex)
+            {
+                MessageBox.Show("btnSearch_Click");
+                Debug.WriteLine(ex);
             }
         }
     }

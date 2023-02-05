@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fmDataView));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lvSeriesTypes = new System.Windows.Forms.ListView();
             this.ColumnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -38,9 +39,6 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnRmvSeriesType = new System.Windows.Forms.ToolStripButton();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.lvSeries = new System.Windows.Forms.ListView();
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.btnAddSeries = new System.Windows.Forms.ToolStripButton();
@@ -48,6 +46,7 @@
             this.btnRmvSeries = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.btnPin = new System.Windows.Forms.ToolStripButton();
+            this.btnFavorite = new System.Windows.Forms.ToolStripButton();
             this.lvIssues = new System.Windows.Forms.ListView();
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -61,7 +60,12 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnRmvIssue = new System.Windows.Forms.ToolStripButton();
             this.lblViewOnline = new System.Windows.Forms.ToolStripLabel();
-            this.btnFavorite = new System.Windows.Forms.ToolStripButton();
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lvSeries = new System.Windows.Forms.ListView();
+            this.tbSearch = new System.Windows.Forms.ToolStripTextBox();
+            this.btnSearch = new System.Windows.Forms.ToolStripButton();
+            this.lblSearch = new System.Windows.Forms.ToolStripLabel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -182,31 +186,6 @@
             this.splitContainer2.SplitterDistance = 241;
             this.splitContainer2.TabIndex = 0;
             // 
-            // lvSeries
-            // 
-            this.lvSeries.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader2,
-            this.columnHeader9});
-            this.lvSeries.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvSeries.FullRowSelect = true;
-            this.lvSeries.GridLines = true;
-            this.lvSeries.HideSelection = false;
-            this.lvSeries.Location = new System.Drawing.Point(0, 25);
-            this.lvSeries.Name = "lvSeries";
-            this.lvSeries.Size = new System.Drawing.Size(524, 216);
-            this.lvSeries.TabIndex = 1;
-            this.lvSeries.UseCompatibleStateImageBehavior = false;
-            this.lvSeries.View = System.Windows.Forms.View.Details;
-            this.lvSeries.SelectedIndexChanged += new System.EventHandler(this.lvSeries_SelectedIndexChanged);
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Series Title";
-            // 
-            // columnHeader9
-            // 
-            this.columnHeader9.Text = "Notes";
-            // 
             // toolStrip2
             // 
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -216,7 +195,10 @@
             this.btnRmvSeries,
             this.toolStripSeparator4,
             this.btnPin,
-            this.btnFavorite});
+            this.btnFavorite,
+            this.btnSearch,
+            this.tbSearch,
+            this.lblSearch});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(524, 25);
@@ -268,6 +250,16 @@
             this.btnPin.Size = new System.Drawing.Size(23, 22);
             this.btnPin.Text = "Pin";
             this.btnPin.Click += new System.EventHandler(this.btnPin_Click);
+            // 
+            // btnFavorite
+            // 
+            this.btnFavorite.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnFavorite.Image = global::MediaTracker.Properties.Resources.star;
+            this.btnFavorite.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFavorite.Name = "btnFavorite";
+            this.btnFavorite.Size = new System.Drawing.Size(23, 22);
+            this.btnFavorite.Text = "Favorite";
+            this.btnFavorite.Click += new System.EventHandler(this.btnFavorite_Click);
             // 
             // lvIssues
             // 
@@ -367,15 +359,59 @@
             this.lblViewOnline.Text = "View Online";
             this.lblViewOnline.Click += new System.EventHandler(this.lblViewOnline_Click);
             // 
-            // btnFavorite
+            // columnHeader2
             // 
-            this.btnFavorite.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnFavorite.Image = global::MediaTracker.Properties.Resources.star;
-            this.btnFavorite.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnFavorite.Name = "btnFavorite";
-            this.btnFavorite.Size = new System.Drawing.Size(23, 22);
-            this.btnFavorite.Text = "Favorite";
-            this.btnFavorite.Click += new System.EventHandler(this.btnFavorite_Click);
+            this.columnHeader2.Text = "Series Title";
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Notes";
+            // 
+            // lvSeries
+            // 
+            this.lvSeries.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader2,
+            this.columnHeader9});
+            this.lvSeries.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvSeries.FullRowSelect = true;
+            this.lvSeries.GridLines = true;
+            this.lvSeries.HideSelection = false;
+            this.lvSeries.Location = new System.Drawing.Point(0, 25);
+            this.lvSeries.Name = "lvSeries";
+            this.lvSeries.Size = new System.Drawing.Size(524, 216);
+            this.lvSeries.TabIndex = 1;
+            this.lvSeries.UseCompatibleStateImageBehavior = false;
+            this.lvSeries.View = System.Windows.Forms.View.Details;
+            this.lvSeries.SelectedIndexChanged += new System.EventHandler(this.lvSeries_SelectedIndexChanged);
+            // 
+            // tbSearch
+            // 
+            this.tbSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tbSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(200, 25);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
+            this.btnSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(46, 22);
+            this.btnSearch.Text = "Search";
+            this.btnSearch.ToolTipText = "Search";
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // lblSearch
+            // 
+            this.lblSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.lblSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.lblSearch.Image = ((System.Drawing.Image)(resources.GetObject("lblSearch.Image")));
+            this.lblSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(45, 22);
+            this.lblSearch.Text = "Search:";
             // 
             // fmDataView
             // 
@@ -417,7 +453,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton btnRmvSeriesType;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.ListView lvSeries;
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
         private System.Windows.Forms.ToolStripButton btnAddSeries;
@@ -430,18 +465,22 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton btnRmvIssue;
         private System.Windows.Forms.ColumnHeader ColumnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
-        private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.ToolStripLabel lblViewOnline;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton btnPin;
         private System.Windows.Forms.ToolStripButton btnFavorite;
+        private System.Windows.Forms.ListView lvSeries;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.ToolStripButton btnSearch;
+        private System.Windows.Forms.ToolStripTextBox tbSearch;
+        private System.Windows.Forms.ToolStripLabel lblSearch;
     }
 }
